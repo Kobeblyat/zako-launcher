@@ -1,0 +1,278 @@
+<Window x:Class="ZakoLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        Title="Zako 服启动器" Width="1440" Height="810" MinWidth="960" MinHeight="540"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="False"
+        Background="#101315" ResizeMode="CanResize" Icon="Assets/fatcat.ico">
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="0" ResizeBorderThickness="6" GlassFrameThickness="0" CornerRadius="12" UseAeroCaptionButtons="False"/>
+    </shell:WindowChrome.WindowChrome>
+    <Window.Resources>
+        <FontFamily x:Key="UiFont">Segoe UI Variable, Microsoft YaHei UI</FontFamily>
+        <SolidColorBrush x:Key="Accent">#FFD632</SolidColorBrush>
+        <LinearGradientBrush x:Key="HeroShade" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="#E815181B" Offset="0"/><GradientStop Color="#B015181B" Offset="0.32"/>
+            <GradientStop Color="#3615181B" Offset="0.70"/><GradientStop Color="#0A15181B" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="BottomShade" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#00101214" Offset="0.48"/><GradientStop Color="#E3101214" Offset="1"/>
+        </LinearGradientBrush>
+
+        <Style x:Key="ChromeButton" TargetType="Button">
+            <Setter Property="Width" Value="40"/><Setter Property="Height" Value="40"/><Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#EEF0F2"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+                <Border x:Name="B" Background="{TemplateBinding Background}" CornerRadius="8"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                <ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="B" Property="Background" Value="#22FFFFFF"/></Trigger></ControlTemplate.Triggers>
+            </ControlTemplate></Setter.Value></Setter>
+        </Style>
+        <Style x:Key="RailIconButton" TargetType="Button" BasedOn="{StaticResource ChromeButton}">
+            <Setter Property="Width" Value="46"/><Setter Property="Height" Value="46"/><Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Background" Value="#86202427"/><Setter Property="FontFamily" Value="Segoe MDL2 Assets"/><Setter Property="FontSize" Value="19"/>
+        </Style>
+        <Style x:Key="GhostButton" TargetType="Button">
+            <Setter Property="FontFamily" Value="{StaticResource UiFont}"/><Setter Property="Foreground" Value="#F4F5F5"/><Setter Property="Background" Value="#242A2E"/>
+            <Setter Property="BorderBrush" Value="#4A5156"/><Setter Property="BorderThickness" Value="1"/><Setter Property="Padding" Value="16,9"/>
+            <Setter Property="FontSize" Value="13"/><Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+                <Border x:Name="B" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="7">
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="B" Property="Background" Value="#394045"/></Trigger></ControlTemplate.Triggers>
+            </ControlTemplate></Setter.Value></Setter>
+        </Style>
+        <Style x:Key="NewsTab" TargetType="Button">
+            <Setter Property="FontFamily" Value="{StaticResource UiFont}"/><Setter Property="Foreground" Value="#7E858B"/><Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/><Setter Property="FontSize" Value="15"/><Setter Property="Padding" Value="0"/><Setter Property="Margin" Value="0,0,25,0"/><Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style x:Key="NewsRow" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Height" Value="29"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/><Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter Property="Background" Value="#18FFFFFF"/></Trigger></Style.Triggers>
+        </Style>
+        <Style x:Key="MenuItemButton" TargetType="Button">
+            <Setter Property="Height" Value="40"/><Setter Property="HorizontalContentAlignment" Value="Left"/><Setter Property="Padding" Value="14,0"/>
+            <Setter Property="Background" Value="Transparent"/><Setter Property="Foreground" Value="#E6E9EB"/><Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontFamily" Value="{StaticResource UiFont}"/><Setter Property="FontSize" Value="13"/><Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter Property="Background" Value="#3B4248"/></Trigger></Style.Triggers>
+        </Style>
+        <Style x:Key="DrawerNav" TargetType="Button">
+            <Setter Property="Width" Value="78"/><Setter Property="Height" Value="42"/><Setter Property="Margin" Value="0,0,8,0"/><Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#8E969C"/><Setter Property="BorderThickness" Value="0"/><Setter Property="FontFamily" Value="{StaticResource UiFont}"/><Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+                <Border x:Name="B" Background="{TemplateBinding Background}" CornerRadius="7"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                <ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="B" Property="Background" Value="#252B2F"/><Setter Property="Foreground" Value="White"/></Trigger></ControlTemplate.Triggers>
+            </ControlTemplate></Setter.Value></Setter>
+        </Style>
+        <Style x:Key="DarkComboItem" TargetType="ComboBoxItem">
+            <Setter Property="Foreground" Value="#E7EAEC"/><Setter Property="Background" Value="#252A2E"/><Setter Property="Padding" Value="12,8"/>
+            <Style.Triggers><Trigger Property="IsHighlighted" Value="True"><Setter Property="Background" Value="#3B4247"/></Trigger></Style.Triggers>
+        </Style>
+        <Style x:Key="DarkCombo" TargetType="ComboBox">
+            <Setter Property="Foreground" Value="White"/><Setter Property="ItemContainerStyle" Value="{StaticResource DarkComboItem}"/>
+            <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ComboBox">
+                <Grid>
+                    <ToggleButton Focusable="False" IsChecked="{Binding IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" Background="Transparent" BorderThickness="0">
+                        <Grid><Border Background="#252A2E" BorderBrush="#41484D" BorderThickness="1" CornerRadius="7"/>
+                            <ContentPresenter Content="{TemplateBinding SelectionBoxItem}" VerticalAlignment="Center" Margin="13,0,36,0" HorizontalAlignment="Left"/>
+                            <TextBlock Text="⌄" Foreground="#AEB4B8" FontSize="17" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,13,4"/>
+                        </Grid>
+                    </ToggleButton>
+                    <Popup x:Name="PART_Popup" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" AllowsTransparency="True">
+                        <Border Background="#252A2E" BorderBrush="#4A5156" BorderThickness="1" CornerRadius="7" MinWidth="{Binding ActualWidth,RelativeSource={RelativeSource TemplatedParent}}" Margin="0,3,0,0">
+                            <ScrollViewer MaxHeight="220"><ItemsPresenter/></ScrollViewer>
+                        </Border>
+                    </Popup>
+                </Grid>
+            </ControlTemplate></Setter.Value></Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border Margin="0" Background="#101315" BorderThickness="0" CornerRadius="12">
+        <Viewbox Stretch="Fill">
+            <Grid Width="1440" Height="810" ClipToBounds="True">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="78"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+
+                <!-- Hero area -->
+                <Grid Grid.Column="1">
+                    <Image x:Name="HeroImage" Stretch="UniformToFill">
+                        <Image.Source>
+                            <BitmapImage UriSource="Assets/zako-hero.png" DecodePixelWidth="1920" CacheOption="OnLoad"/>
+                        </Image.Source>
+                    </Image>
+                    <Rectangle Fill="{StaticResource HeroShade}"/><Rectangle Fill="{StaticResource BottomShade}"/>
+
+                    <StackPanel Margin="72,0,0,0" Width="510" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <Border Background="#3AFFD632" BorderBrush="#8DFFD632" BorderThickness="1" CornerRadius="14" Padding="12,5" HorizontalAlignment="Left" Margin="0,0,0,18">
+                            <TextBlock Text="ZAKO COMMUNITY · ONLINE" Foreground="#FFFFE582" FontFamily="Segoe UI Variable" FontSize="11" FontWeight="SemiBold"/>
+                        </Border>
+                        <TextBlock Text="这个夏天，来点&#x0a;不一样的沙盒。" Foreground="White" FontFamily="{StaticResource UiFont}" FontSize="44" FontWeight="Bold" LineHeight="58"/>
+                        <TextBlock Text="Zako 服 · 动漫 · 沙盒 · 欢乐整活" Foreground="#DDE1E4" FontFamily="{StaticResource UiFont}" FontSize="16" Margin="2,17,0,0"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,24,0,0">
+                            <Button Style="{StaticResource GhostButton}" Content="查看服务器合集" Click="CollectionButton_Click"/>
+                            <Button Style="{StaticResource GhostButton}" Content="🎬 视频播放修复" Margin="9,0,0,0" Background="#1AFFD632" BorderBrush="#6EFFD632" Foreground="#FFD632" Click="VideoFixButton_Click" ToolTip="集成 GModPatchTool，一键修复游戏内视频/HTML 黑屏、无声、CEF 崩溃"/>
+                            <Border Margin="12,0,0,0" Padding="13,8" Background="#8B24292C" CornerRadius="7" BorderBrush="#45FFFFFF" BorderThickness="1">
+                                <StackPanel Orientation="Horizontal"><Ellipse x:Name="StatusDot" Width="8" Height="8" Fill="#73E39A" Margin="0,0,8,0"/><TextBlock x:Name="StatusText" Text="正在检测游戏…" Foreground="#E7EAEC" FontSize="12" VerticalAlignment="Center"/></StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- In-launcher news -->
+                    <Border Width="610" Height="218" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="72,0,0,48" Background="#E51A1E21" CornerRadius="12" BorderBrush="#34FFFFFF" BorderThickness="1">
+                        <Grid Margin="11"><Grid.ColumnDefinitions><ColumnDefinition Width="250"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                            <Grid ClipToBounds="True"><Image Stretch="UniformToFill"><Image.Source><BitmapImage UriSource="Assets/server-life-1.jpg" DecodePixelWidth="600" CacheOption="OnLoad"/></Image.Source></Image><Rectangle VerticalAlignment="Bottom" Height="64"><Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#00101010"/><GradientStop Color="#E5101010" Offset="1"/></LinearGradientBrush></Rectangle.Fill></Rectangle><StackPanel VerticalAlignment="Bottom" Margin="14,0,10,12"><TextBlock Text="ZAKO 服日常" Foreground="#FFD632" FontSize="10" FontWeight="Bold"/><TextBlock Text="沙盒里的每一天都不重样" Foreground="White" FontSize="14" FontWeight="SemiBold" Margin="0,3,0,0"/></StackPanel></Grid>
+                            <Grid Grid.Column="1" Margin="18,9,12,8"><Grid.RowDefinitions><RowDefinition Height="35"/><RowDefinition Height="*"/><RowDefinition Height="5"/></Grid.RowDefinitions>
+                                <StackPanel Orientation="Horizontal"><Button x:Name="ActivityTab" Style="{StaticResource NewsTab}" Foreground="White" FontWeight="Bold" Content="活动" Tag="activity" Click="NewsTab_Click"/><Button x:Name="NoticeTab" Style="{StaticResource NewsTab}" Content="公告" Tag="notice" Click="NewsTab_Click"/><Button x:Name="InfoTab" Style="{StaticResource NewsTab}" Content="资讯" Tag="info" Click="NewsTab_Click"/></StackPanel>
+                                <StackPanel Grid.Row="1">
+                                    <Button x:Name="NewsButton1" Style="{StaticResource NewsRow}" Tag="welcome" Click="ArticleButton_Click"><Grid><TextBlock x:Name="NewsLine1" Text="[欢迎]  神秘开趴服 · 多模式欢乐开放" Foreground="#D8DCDF" FontSize="12" VerticalAlignment="Center"/><TextBlock x:Name="NewsDate1" Text="NEW" Foreground="#FFD632" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid></Button>
+                                    <Button x:Name="NewsButton2" Style="{StaticResource NewsRow}" Tag="collection" Click="ArticleButton_Click"><Grid><TextBlock x:Name="NewsLine2" Text="[必看]  加入前请订阅服务器合集" Foreground="#D8DCDF" FontSize="12" VerticalAlignment="Center"/><TextBlock x:Name="NewsDate2" Text="合集" Foreground="#777F85" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid></Button>
+                                    <Button x:Name="NewsButton3" Style="{StaticResource NewsRow}" Tag="modes" Click="ArticleButton_Click"><Grid><TextBlock x:Name="NewsLine3" Text="[活动]  TTT / COOP / 躲猫猫等模式轮换" Foreground="#D8DCDF" FontSize="12" VerticalAlignment="Center"/><TextBlock x:Name="NewsDate3" Text="官网" Foreground="#777F85" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid></Button>
+                                </StackPanel>
+                                <Rectangle Grid.Row="2" Width="22" Height="3" Fill="#FFD632" HorizontalAlignment="Left" RadiusX="2" RadiusY="2"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <!-- Right icon rail -->
+                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,30">
+                        <Button Style="{StaticResource RailIconButton}" Content="&#xE774;" ToolTip="Zako 官网" Tag="https://zako.life" Click="ExternalLinkButton_Click"/>
+                        <Button Style="{StaticResource RailIconButton}" Content="&#xE8BD;" ToolTip="客服与反馈" Tag="https://talk.zako.life" Click="ExternalLinkButton_Click"/>
+                        <Button Style="{StaticResource RailIconButton}" Content="&#xE8F1;" ToolTip="创意工坊合集" Tag="https://steamcommunity.com/sharedfiles/filedetails/?id=3562943550" Click="ExternalLinkButton_Click"/>
+                        <Button Style="{StaticResource RailIconButton}" Content="&#xE897;" ToolTip="帮助与常用命令" Tag="help" Click="ExternalLinkButton_Click"/>
+                    </StackPanel>
+
+                    <!-- Launch controls -->
+                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,56,47">
+                        <TextBlock Text="服务器地址  171.80.0.187" Foreground="#C2C8CC" HorizontalAlignment="Center" FontSize="11" Margin="0,0,0,8"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="LaunchButton" Width="225" Height="64" BorderThickness="0" Background="#FFD632" Click="LaunchButton_Click" Cursor="Hand">
+                                <Button.Template><ControlTemplate TargetType="Button"><Border x:Name="B" Background="{TemplateBinding Background}" CornerRadius="32"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="63"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><Ellipse Width="40" Height="40" Fill="#202326" HorizontalAlignment="Right"/><Path Data="M 0 0 L 0 14 L 11 7 Z" Fill="#FFD632" Width="11" Height="14" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="16,0,0,0"/><TextBlock Grid.Column="1" Text="开始游戏" Foreground="#191B1D" FontFamily="{StaticResource UiFont}" FontSize="19" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,15,0"/></Grid></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="B" Property="Background" Value="#FFE36A"/></Trigger><Trigger Property="IsPressed" Value="True"><Setter TargetName="B" Property="Opacity" Value="0.86"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Button.Template>
+                            </Button>
+                            <Button x:Name="QuickMenuButton" Width="64" Height="64" Margin="11,0,0,0" Background="#B3212629" BorderThickness="0" Cursor="Hand" Click="QuickMenuButton_Click">
+                                <Button.Template><ControlTemplate TargetType="Button"><Border x:Name="B" Background="{TemplateBinding Background}" CornerRadius="17"><StackPanel Width="22" VerticalAlignment="Center"><Border Height="2" Background="#E7EAEC" CornerRadius="1" Margin="0,0,0,5"/><Border Height="2" Background="#E7EAEC" CornerRadius="1" Margin="0,0,0,5"/><Border Height="2" Background="#E7EAEC" CornerRadius="1"/></StackPanel></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="B" Property="Background" Value="#DC30363A"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Button.Template>
+                            </Button>
+                            <Popup x:Name="QuickMenuPopup" PlacementTarget="{Binding ElementName=QuickMenuButton}" Placement="Top" HorizontalOffset="-106" VerticalOffset="-8" StaysOpen="False" AllowsTransparency="True" PopupAnimation="Fade">
+                                <Border Width="195" Background="#F52D3338" BorderBrush="#4B555C" BorderThickness="1" CornerRadius="10" Padding="5"><StackPanel>
+                                    <Button Style="{StaticResource MenuItemButton}" Content="游戏设置" Tag="settings" Click="QuickMenuItem_Click"/>
+                                    <Button Style="{StaticResource MenuItemButton}" Content="添加桌面快捷方式" Tag="shortcut" Click="QuickMenuItem_Click"/>
+                                    <Button Style="{StaticResource MenuItemButton}" Content="检查更新" Tag="update" Click="QuickMenuItem_Click"/>
+                                    <Button Style="{StaticResource MenuItemButton}" Content="🎬 GMOD视频播放修复" Tag="video_fix" Click="QuickMenuItem_Click"/>
+                                    <Button Style="{StaticResource MenuItemButton}" Content="一键修复" Tag="repair" Click="QuickMenuItem_Click"/>
+                                </StackPanel></Border>
+                            </Popup>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Left game rail -->
+                <Border Grid.Column="0" Background="#F20D1012" BorderBrush="#25FFFFFF" BorderThickness="0,0,1,0">
+                    <Grid><Grid.RowDefinitions><RowDefinition Height="80"/><RowDefinition Height="*"/><RowDefinition Height="78"/></Grid.RowDefinitions>
+                        <Grid><Ellipse Width="45" Height="45" Fill="#FFD632"/><TextBlock Text="Z" Foreground="#141719" FontFamily="Arial" FontSize="25" FontWeight="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/></Grid>
+                        <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Margin="0,0,0,15">
+                            <Button Style="{StaticResource ChromeButton}" Width="58" Height="58" Margin="0,0,0,7" Tag="Assets/zako-hero.png" Click="HeroButton_Click"><Border Width="44" Height="44" CornerRadius="10" BorderBrush="#FFD632" BorderThickness="2"><Image Stretch="UniformToFill"><Image.Source><BitmapImage UriSource="Assets/fatcat.png" DecodePixelWidth="256" CacheOption="OnLoad"/></Image.Source></Image></Border></Button>
+                            <Button Style="{StaticResource ChromeButton}" Width="58" Height="58" Margin="0,0,0,7" Tag="Assets/server-life-1.jpg" Click="HeroButton_Click"><Border Width="44" Height="44" CornerRadius="10" BorderBrush="#36FFFFFF" BorderThickness="1"><Image Stretch="UniformToFill"><Image.Source><BitmapImage UriSource="Assets/server-life-1.jpg" DecodePixelWidth="200" CacheOption="OnLoad"/></Image.Source></Image></Border></Button>
+                            <Button Style="{StaticResource ChromeButton}" Width="58" Height="58" Tag="Assets/server-life-2.jpg" Click="HeroButton_Click"><Border Width="44" Height="44" CornerRadius="10" BorderBrush="#36FFFFFF" BorderThickness="1"><Image Stretch="UniformToFill"><Image.Source><BitmapImage UriSource="Assets/server-life-2.jpg" DecodePixelWidth="200" CacheOption="OnLoad"/></Image.Source></Image></Border></Button>
+                        </StackPanel>
+                        <Button Grid.Row="2" Style="{StaticResource ChromeButton}" Width="50" Height="50" Background="#252A2E" ToolTip="游戏设置" Click="OpenSettingsButton_Click"><TextBlock Text="&#xE713;" FontFamily="Segoe MDL2 Assets" FontSize="22"/></Button>
+                    </Grid>
+                </Border>
+
+                <!-- Window chrome -->
+                <Grid Grid.ColumnSpan="2" Height="52" VerticalAlignment="Top" Background="Transparent" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown" Panel.ZIndex="20">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,6,10,0"><Button Style="{StaticResource ChromeButton}" Click="MinimizeButton_Click"><TextBlock Text="&#xE921;" FontFamily="Segoe MDL2 Assets" FontSize="12"/></Button><Button Style="{StaticResource ChromeButton}" Click="MaximizeButton_Click"><TextBlock Text="&#xE922;" FontFamily="Segoe MDL2 Assets" FontSize="11"/></Button><Button Style="{StaticResource ChromeButton}" Click="CloseButton_Click"><TextBlock Text="&#xE8BB;" FontFamily="Segoe MDL2 Assets" FontSize="14"/></Button></StackPanel>
+                </Grid>
+
+                <!-- Compact settings drawer -->
+                <Grid x:Name="SettingsOverlay" Grid.ColumnSpan="2" Visibility="Collapsed" Background="#5E000000" Panel.ZIndex="10">
+                    <Border Width="535" HorizontalAlignment="Right" Background="#FA14181B" BorderBrush="#394146" BorderThickness="1,0,0,0">
+                        <Grid Margin="28,55,28,24"><Grid.RowDefinitions><RowDefinition Height="55"/><RowDefinition Height="48"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+                            <Grid><TextBlock Text="游戏设置" Foreground="White" FontFamily="{StaticResource UiFont}" FontSize="23" FontWeight="Bold" VerticalAlignment="Top"/><Button Style="{StaticResource ChromeButton}" HorizontalAlignment="Right" VerticalAlignment="Top" Click="CloseSettingsButton_Click"><TextBlock Text="&#xE8BB;" FontFamily="Segoe MDL2 Assets" FontSize="15"/></Button></Grid>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal"><Button x:Name="BasicNav" Style="{StaticResource DrawerNav}" Content="基本" Tag="basic" Click="SettingsNavButton_Click" Background="#2A3034" Foreground="White"/><Button x:Name="AdvancedNav" Style="{StaticResource DrawerNav}" Content="高级" Tag="advanced" Click="SettingsNavButton_Click"/><Button x:Name="LogsNav" Style="{StaticResource DrawerNav}" Content="日志" Tag="logs" Click="SettingsNavButton_Click"/><Button x:Name="HelpNav" Style="{StaticResource DrawerNav}" Content="帮助" Tag="help" Click="SettingsNavButton_Click"/></StackPanel>
+                            <Grid Grid.Row="2" Margin="0,14,0,0">
+                                <StackPanel x:Name="BasicSettingsPanel">
+                                    <Grid Margin="0,0,0,16"><Grid.ColumnDefinitions><ColumnDefinition Width="58"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><Border Width="48" Height="48" CornerRadius="9"><Image Stretch="UniformToFill"><Image.Source><BitmapImage UriSource="Assets/fatcat.png" DecodePixelWidth="128" CacheOption="OnLoad"/></Image.Source></Image></Border><StackPanel Grid.Column="1" VerticalAlignment="Center"><TextBlock Text="Garry's Mod" Foreground="White" FontSize="17" FontWeight="SemiBold"/><TextBlock Text="Zako 社区服务器客户端" Foreground="#858D93" FontSize="11" Margin="0,3,0,0"/></StackPanel><StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center"><Border Background="#2539D98A" BorderBrush="#4E39D98A" BorderThickness="1" CornerRadius="11" Padding="10,4"><TextBlock x:Name="ArchitectureText" Text="检测中" Foreground="#73E39A" FontSize="11"/></Border><Button x:Name="ArchitectureSwitchButton" Visibility="Collapsed" Style="{StaticResource GhostButton}" Content="自动切换" Margin="7,0,0,0" Padding="10,4" Click="ArchitectureSwitchButton_Click"/></StackPanel></Grid>
+                                    <Border Background="#23282C" CornerRadius="9" Padding="15" Margin="0,0,0,12"><StackPanel><TextBlock Text="服务器：171.80.0.187（成都）" Foreground="#D9DCDE" FontSize="12"/><TextBlock x:Name="InstallDateText" Text="安装信息：正在读取" Foreground="#92999F" FontSize="11" Margin="0,7,0,0"/><TextBlock Text="模式：TTT、沙盒、COOP、躲猫猫、SlashCo 等" Foreground="#92999F" FontSize="11" Margin="0,7,0,0"/></StackPanel></Border>
+                                    <Border Background="#23282C" CornerRadius="9" Padding="14,12"><TextBlock x:Name="InstallPathText" Text="尚未定位游戏" Foreground="#EBEDEE" FontSize="12" TextTrimming="CharacterEllipsis"/></Border>
+                                    <WrapPanel Margin="0,14,0,0"><Button Style="{StaticResource GhostButton}" Content="打开目录" Click="OpenGameFolderButton_Click" Margin="0,0,9,0"/><Button Style="{StaticResource GhostButton}" Content="重新定位" Click="RelocateGameButton_Click" Margin="0,0,9,0"/><Button Style="{StaticResource GhostButton}" Content="重新扫描" Click="RescanButton_Click"/></WrapPanel>
+                                    <!-- GMOD视频播放修复卡片 -->
+                                    <Border Background="#1E2A2E" CornerRadius="9" Padding="14,12" Margin="0,14,0,0" BorderBrush="#3AFFD632" BorderThickness="1">
+                                        <Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                                            <StackPanel Orientation="Horizontal"><TextBlock Text="🎬" FontSize="14"/><TextBlock Text=" GMOD 视频播放修复" Foreground="#FFD632" FontSize="12" FontWeight="Bold" Margin="6,0,0,0"/><Border Margin="8,0,0,0" Background="#33FFD632" CornerRadius="6" Padding="6,2"><TextBlock x:Name="VideoFixStatusText" Text="检测中…" Foreground="#FFD632" FontSize="10"/></Border></StackPanel>
+                                            <TextBlock Grid.Row="1" Text="集成 GModPatchTool 20260723 · 修复游戏内视频黑屏/无声、HTML 白屏、CEF 崩溃；更新 CEF 137 支持 H.264/AAC、Widevine、WebGL。" Foreground="#AEB4B8" FontSize="11" TextWrapping="Wrap" Margin="0,7,0,0" LineHeight="16"/>
+                                            <WrapPanel Grid.Row="2" Margin="0,10,0,0"><Button Style="{StaticResource GhostButton}" Content="一键修复视频" Background="#FFD632" Foreground="#141719" BorderBrush="#FFD632" Click="VideoFixButton_Click"/><Button Style="{StaticResource GhostButton}" Content="查看说明" Margin="8,0,0,0" Click="VideoFixHelpButton_Click"/><Button Style="{StaticResource GhostButton}" Content="打开工具目录" Margin="8,0,0,0" Click="OpenVideoFixFolderButton_Click"/></WrapPanel>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <ScrollViewer x:Name="AdvancedSettingsPanel" Visibility="Collapsed" VerticalScrollBarVisibility="Auto"><StackPanel>
+                                    <TextBlock Text="显示模式" Foreground="#BFC5C9" FontSize="12" Margin="0,0,0,7"/><ComboBox x:Name="DisplayModeCombo" Style="{StaticResource DarkCombo}" Height="40" SelectedIndex="0" Margin="0,0,0,13"><ComboBoxItem Content="无边框窗口（推荐，切屏不卡顿）"/><ComboBoxItem Content="全屏（独占模式，切屏较慢）"/><ComboBoxItem Content="窗口化"/><ComboBoxItem Content="默认（由游戏内决定）"/></ComboBox>
+                                    <TextBlock Text="游戏分辨率" Foreground="#BFC5C9" FontSize="12" Margin="0,0,0,7"/><ComboBox x:Name="ResolutionCombo" Style="{StaticResource DarkCombo}" Height="40" SelectedIndex="0" Margin="0,0,0,13"><ComboBoxItem Content="默认（由游戏内决定，推荐）"/><ComboBoxItem Content="跟随屏幕原生分辨率"/><ComboBoxItem Content="1920 × 1080"/><ComboBoxItem Content="2560 × 1440"/><ComboBoxItem Content="3840 × 2160"/><ComboBoxItem Content="1280 × 720"/></ComboBox>
+                                    <Border Background="#23282C" CornerRadius="9" Padding="14,7" Margin="0,0,0,13"><StackPanel>
+                                        <CheckBox x:Name="SkipIntroCheck" Content="跳过启动视频（-novid）" Foreground="#DDE0E2" Padding="0,7"/>
+                                        <CheckBox x:Name="ConsoleCheck" Content="启动时打开控制台（-console）" Foreground="#DDE0E2" Padding="0,7"/>
+                                        <CheckBox x:Name="AutoCollectionCheck" Content="启动前自动打开模组合集" Foreground="#DDE0E2" Padding="0,7"/>
+                                        <CheckBox x:Name="AutoMinimizeCheck" Content="启动游戏后自动最小化启动器（防未响应与焦点冲突）" Foreground="#DDE0E2" Padding="0,7"/>
+                                        <CheckBox x:Name="DirectConnectCheck" Content="启动时直接连接 Zako 服（取消则先进入主菜单）" Foreground="#DDE0E2" Padding="0,7"/>
+                                    </StackPanel></Border>
+                                    <TextBlock Text="自定义启动参数" Foreground="#BFC5C9" FontSize="12" Margin="0,0,0,7"/><TextBox x:Name="CustomArgumentsText" Height="42" Padding="11" Background="#23282C" Foreground="White" BorderBrush="#41484D" BorderThickness="1" FontSize="12"/>
+                                    <Button Width="128" Height="40" HorizontalAlignment="Left" Margin="0,15,0,0" Background="#FFD632" Foreground="#17191B" BorderThickness="0" FontWeight="Bold" Content="保存设置" Click="SaveSettingsButton_Click"/>
+                                </StackPanel></ScrollViewer>
+                                <StackPanel x:Name="LogsSettingsPanel" Visibility="Collapsed"><TextBox x:Name="LogTextBox" Height="455" IsReadOnly="True" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Background="#202428" Foreground="#BEC4C8" BorderBrush="#394146" Padding="11" FontFamily="Consolas" FontSize="10"/><WrapPanel Margin="0,12,0,0"><Button Style="{StaticResource GhostButton}" Content="刷新日志" Click="RefreshLogsButton_Click" Margin="0,0,9,0"/><Button Style="{StaticResource GhostButton}" Content="打开日志目录" Click="OpenLogFolderButton_Click"/></WrapPanel></StackPanel>
+                                <ScrollViewer x:Name="HelpSettingsPanel" Visibility="Collapsed" VerticalScrollBarVisibility="Auto"><StackPanel>
+                                    <Border Background="#23282C" CornerRadius="9" Padding="16"><StackPanel><TextBlock Text="游戏内常用命令" Foreground="White" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,12"/><TextBlock Text="!rtd   抽取随机道具或能力" Foreground="#C7CCD0" Margin="0,0,0,9"/><TextBlock Text="!huantu   投票更换当前地图" Foreground="#C7CCD0" Margin="0,0,0,9"/><TextBlock Text="L   每日签到，或在 COOP 模式自行复活" Foreground="#C7CCD0" Margin="0,0,0,9"/><TextBlock Text="!motd   查看服务器留言板" Foreground="#C7CCD0"/></StackPanel></Border>
+                                    <Border Background="#1E2A2E" CornerRadius="9" Padding="16" Margin="0,12,0,0" BorderBrush="#3AFFD632" BorderThickness="1"><StackPanel><TextBlock Text="🎬 GMOD 视频播放修复" Foreground="#FFD632" FontSize="14" FontWeight="SemiBold"/><TextBlock Text="已集成 GModPatchTool 20260723，更新 CEF 137（Chromium 137），支持 H.264/AAC、Widevine，修复黑屏/无声/CEF 崩溃。" Foreground="#AEB4B8" FontSize="11" TextWrapping="Wrap" Margin="0,6,0,0" LineHeight="16"/><WrapPanel Margin="0,10,0,0"><Button Style="{StaticResource GhostButton}" Content="一键修复视频" Background="#FFD632" Foreground="#141719" BorderBrush="#FFD632" Click="VideoFixButton_Click"/><Button Style="{StaticResource GhostButton}" Content="查看详细说明" Margin="8,0,0,0" Click="VideoFixHelpButton_Click"/></WrapPanel></StackPanel></Border>
+                                    <Border Background="#1E2528" CornerRadius="9" Padding="16" Margin="0,12,0,0" BorderBrush="#4A6BFF" BorderThickness="1"><StackPanel><TextBlock Text="💻 为什么要用 x86-64？" Foreground="#6BB8FF" FontSize="14" FontWeight="SemiBold"/><TextBlock Text="突破 4GB 限制、更稳更流畅；大量模组不闪退；视频修复在 64 位下效果最完整；官方推荐分支。" Foreground="#AEB4B8" FontSize="11" TextWrapping="Wrap" Margin="0,6,0,0" LineHeight="16"/><WrapPanel Margin="0,10,0,0"><Button Style="{StaticResource GhostButton}" Content="查看 x86-64 好处" Click="ShowX64PromoFromHelp_Click"/><Button Style="{StaticResource GhostButton}" Content="立即自动切换" Margin="8,0,0,0" Visibility="{Binding Visibility, ElementName=ArchitectureSwitchButton}" Click="ArchitectureSwitchButton_Click"/></WrapPanel></StackPanel></Border>
+                                    <WrapPanel Margin="0,14,0,0"><Button Style="{StaticResource GhostButton}" Content="联系客服" Tag="https://talk.zako.life" Click="ExternalLinkButton_Click" Margin="0,0,9,0"/><Button Style="{StaticResource GhostButton}" Content="访问官网" Tag="https://zako.life" Click="ExternalLinkButton_Click"/></WrapPanel>
+                                </StackPanel></ScrollViewer>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- Article reader -->
+                <Grid x:Name="ArticleOverlay" Grid.ColumnSpan="2" Visibility="Collapsed" Background="#92000000" Panel.ZIndex="15">
+                    <Border Width="640" Height="420" Background="#FB191D20" BorderBrush="#4A5359" BorderThickness="1" CornerRadius="13" Padding="30" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid><Grid.RowDefinitions><RowDefinition Height="56"/><RowDefinition Height="*"/><RowDefinition Height="48"/></Grid.RowDefinitions><Grid><TextBlock x:Name="ArticleTitle" Text="公告标题" Foreground="White" FontFamily="{StaticResource UiFont}" FontSize="23" FontWeight="Bold"/><Button Style="{StaticResource ChromeButton}" HorizontalAlignment="Right" VerticalAlignment="Top" Click="CloseArticleButton_Click"><TextBlock Text="&#xE8BB;" FontFamily="Segoe MDL2 Assets" FontSize="15"/></Button></Grid><ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto"><TextBlock x:Name="ArticleBody" Foreground="#C6CCD0" FontFamily="{StaticResource UiFont}" FontSize="14" LineHeight="26" TextWrapping="Wrap"/></ScrollViewer><Button x:Name="ArticleActionButton" Grid.Row="2" Style="{StaticResource GhostButton}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Visibility="Collapsed" Content="打开相关页面" Click="ArticleActionButton_Click"/></Grid>
+                    </Border>
+                </Grid>
+
+                <!-- X64 Promo / Version Switch Dialog -->
+                <Grid x:Name="X64PromoOverlay" Grid.ColumnSpan="2" Visibility="Collapsed" Background="#92000000" Panel.ZIndex="16">
+                    <Border Width="680" MaxHeight="620" Background="#FB191D20" BorderBrush="#4A5359" BorderThickness="1" CornerRadius="14" Padding="28" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                            <Grid Margin="0,0,0,12"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="40"/></Grid.ColumnDefinitions>
+                                <StackPanel><StackPanel Orientation="Horizontal"><Border Background="#33FFD632" CornerRadius="7" Padding="8,3"><TextBlock Text="推荐" Foreground="#FFD632" FontSize="11" FontWeight="Bold"/></Border><TextBlock Text=" 强烈建议切换到 x86-64 分支" Foreground="White" FontFamily="{StaticResource UiFont}" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Margin="6,0,0,0"/></StackPanel>
+                                    <TextBlock Text="Zako 服 · 大型模组 · 视频修复 最佳体验" Foreground="#8E969C" FontSize="11" Margin="0,6,0,0"/></StackPanel>
+                                <Button Grid.Column="1" Style="{StaticResource ChromeButton}" HorizontalAlignment="Right" VerticalAlignment="Top" Click="CloseX64PromoButton_Click"><TextBlock Text="&#xE8BB;" FontFamily="Segoe MDL2 Assets" FontSize="15"/></Button>
+                            </Grid>
+                            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="0,0,6,0">
+                                <StackPanel>
+                                    <Border Background="#1E2428" CornerRadius="8" Padding="14,12" Margin="0,0,0,12"><StackPanel><TextBlock Text="为什么必须用 x86-64？" Foreground="#FFD632" FontWeight="SemiBold" FontSize="12"/><TextBlock Text="检测到你当前是 32 位分支（public/main），在 Zako 服大量模组、地图与视频内容下极易崩溃、贴图丢失或视频黑屏。" Foreground="#C6CCD0" FontSize="12" TextWrapping="Wrap" Margin="0,6,0,0" LineHeight="18"/></StackPanel></Border>
+                                    <TextBlock Text="x86-64 带来的好处" Foreground="White" FontWeight="Bold" FontSize="13" Margin="0,0,0,8"/>
+                                    <StackPanel Margin="6,0,0,0">
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8"><Ellipse Width="6" Height="6" Fill="#FFD632" VerticalAlignment="Top" Margin="0,6,0,0"/><StackPanel Margin="8,0,0,0"><TextBlock Text="突破 4GB 内存限制 · 告别闪退" Foreground="#E6E9EB" FontWeight="SemiBold" FontSize="12"/><TextBlock Text="32 位仅能用 4GB，订阅几百个创意工坊后极易内存不足。64 位可使用全部物理内存，加载 Zako 服全量模组时显著更稳。" Foreground="#9AA1A6" FontSize="11" TextWrapping="Wrap" LineHeight="16" Margin="0,2,0,0"/></StackPanel></StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8"><Ellipse Width="6" Height="6" Fill="#73E39A" VerticalAlignment="Top" Margin="0,6,0,0"/><StackPanel Margin="8,0,0,0"><TextBlock Text="性能更稳 · 帧率更高" Foreground="#E6E9EB" FontWeight="SemiBold" FontSize="12"/><TextBlock Text="64 位原生运行，TTT/躲猫猫/COOP 等多实体、大地图场景下 CPU 调度更好，配合无边框窗口与高分辨率更流畅。" Foreground="#9AA1A6" FontSize="11" TextWrapping="Wrap" LineHeight="16" Margin="0,2,0,0"/></StackPanel></StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8"><Ellipse Width="6" Height="6" Fill="#6BB8FF" VerticalAlignment="Top" Margin="0,6,0,0"/><StackPanel Margin="8,0,0,0"><TextBlock Text="视频/HTML 完美修复 · CEF 137" Foreground="#E6E9EB" FontWeight="SemiBold" FontSize="12"/><TextBlock Text="本启动器已集成“GMOD视频播放修复”（GModPatchTool 20260723）。在 x86-64 下可完整启用：H.264/AAC 专有编解码、Widevine、WebGL、GPU 加速；修复游戏内视频黑屏、无声、白屏与 CEF 崩溃。" Foreground="#9AA1A6" FontSize="11" TextWrapping="Wrap" LineHeight="16" Margin="0,2,0,0"/></StackPanel></StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8"><Ellipse Width="6" Height="6" Fill="#FF8A65" VerticalAlignment="Top" Margin="0,6,0,0"/><StackPanel Margin="8,0,0,0"><TextBlock Text="官方推荐 · 未来兼容" Foreground="#E6E9EB" FontWeight="SemiBold" FontSize="12"/><TextBlock Text="Valve/Facepunch 已将 x86-64 设为推荐分支，后续 GMod 更新与 Zako 服新内容优先适配 64 位，32 位将逐步被淘汰。" Foreground="#9AA1A6" FontSize="11" TextWrapping="Wrap" LineHeight="16" Margin="0,2,0,0"/></StackPanel></StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,2"><Ellipse Width="6" Height="6" Fill="#CE93D8" VerticalAlignment="Top" Margin="0,6,0,0"/><StackPanel Margin="8,0,0,0"><TextBlock Text="一键自动切换 · 安全备份" Foreground="#E6E9EB" FontWeight="SemiBold" FontSize="12"/><TextBlock Text="无需手动去 Steam→属性→测试版里切换。点“立即自动切换”，启动器会自动退出 Steam、备份 appmanifest_4000.acf、写入 BetaKey=x86-64 并重启 Steam 等待更新。" Foreground="#9AA1A6" FontSize="11" TextWrapping="Wrap" LineHeight="16" Margin="0,2,0,0"/></StackPanel></StackPanel>
+                                    </StackPanel>
+                                    <Border Background="#233025" CornerRadius="7" Padding="12,10" Margin="0,14,0,0" BorderBrush="#3A6B4A" BorderThickness="1"><StackPanel Orientation="Horizontal"><TextBlock Text="💡" FontSize="12" VerticalAlignment="Top"/><TextBlock Text=" 建议顺序：先切换到 x86-64 → 等 Steam 更新完成 → 再执行“GMOD视频播放修复”，一次到位。" Foreground="#B8E6C1" FontSize="11" TextWrapping="Wrap" Width="580" Margin="4,0,0,0"/></StackPanel></Border>
+                                    <TextBlock Text="当前状态" Foreground="#8E969C" FontSize="11" Margin="0,14,0,6"/><Border Background="#23282C" CornerRadius="7" Padding="12,9"><TextBlock x:Name="X64PromoStatusText" Text="正在检测…" Foreground="#D9DCDE" FontSize="11" TextWrapping="Wrap"/></Border>
+                                </StackPanel>
+                            </ScrollViewer>
+                            <Grid Grid.Row="2" Margin="0,16,0,0"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center"><Button Style="{StaticResource GhostButton}" Content="稍后再说" Padding="18,9" Click="CloseX64PromoButton_Click"/><Button Style="{StaticResource GhostButton}" Content="先修复视频" Margin="8,0,0,0" Padding="18,9" Click="X64PromoVideoFixButton_Click"/></StackPanel>
+                                <Button Grid.Column="1" Background="#FFD632" Foreground="#141719" BorderThickness="0" FontWeight="Bold" FontSize="14" Padding="22,10" Cursor="Hand" Click="X64PromoSwitchButton_Click"><Button.Template><ControlTemplate TargetType="Button"><Border x:Name="B" Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="B" Property="Background" Value="#FFE36A"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Button.Template>立即自动切换到 x86-64</Button>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- Toast -->
+                <Border x:Name="Toast" Grid.Column="1" Visibility="Collapsed" Width="405" MinHeight="75" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,64,25,0" Padding="14,12" Background="#F32A2F33" BorderBrush="#5AFFFFFF" BorderThickness="1" CornerRadius="11" Panel.ZIndex="30">
+                    <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="36"/><ColumnDefinition Width="*"/><ColumnDefinition Width="28"/></Grid.ColumnDefinitions><Border Width="29" Height="29" CornerRadius="15" Background="#3AFFD632" VerticalAlignment="Top"><TextBlock x:Name="ToastIcon" Text="!" Foreground="#FFD632" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><StackPanel Grid.Column="1" Margin="9,0,6,0"><TextBlock x:Name="ToastTitle" Text="提示" Foreground="White" FontSize="13" FontWeight="Bold"/><TextBlock x:Name="ToastMessage" Text="消息" Foreground="#B9C0C5" FontSize="11" TextWrapping="Wrap" Margin="0,3,0,0"/><Button x:Name="ToastActionButton" Visibility="Collapsed" Style="{StaticResource GhostButton}" HorizontalAlignment="Left" Margin="0,8,0,0" Padding="11,5" Content="自动切换" Click="ToastActionButton_Click"/></StackPanel><Button Grid.Column="2" Style="{StaticResource ChromeButton}" Width="27" Height="27" VerticalAlignment="Top" Click="ToastClose_Click"><TextBlock Text="&#xE8BB;" FontFamily="Segoe MDL2 Assets" FontSize="11"/></Button></Grid>
+                </Border>
+            </Grid>
+        </Viewbox>
+    </Border>
+</Window>

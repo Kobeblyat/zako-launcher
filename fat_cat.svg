@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF5E4" />
+      <stop offset="100%" stop-color="#FFE3E1" />
+    </radialGradient>
+
+    <!-- Cat Body Gradient (Orange Tabby Chonk) -->
+    <linearGradient id="catGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFA45B" />
+      <stop offset="60%" stop-color="#FF8B3D" />
+      <stop offset="100%" stop-color="#E0691B" />
+    </linearGradient>
+
+    <!-- Belly Gradient -->
+    <linearGradient id="bellyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF9" />
+      <stop offset="100%" stop-color="#FFEACC" />
+    </linearGradient>
+
+    <!-- Shadow Filter -->
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Background Circle -->
+  <rect width="600" height="600" fill="url(#bgGrad)" />
+  <circle cx="300" cy="300" r="240" fill="#FFFFFF" opacity="0.6" />
+
+  <!-- Ground Shadow -->
+  <ellipse cx="300" cy="495" rx="190" ry="25" fill="#4A3428" opacity="0.15" />
+
+  <!-- Cat Container -->
+  <g filter="url(#softShadow)">
+
+    <!-- Tail (Curled & Fluffy) -->
+    <path d="M 430 420 C 510 440, 550 340, 480 300 C 460 290, 445 320, 465 330 C 500 350, 470 410, 415 390 Z" 
+          fill="#FF8B3D" stroke="#E0691B" stroke-width="3" />
+    <!-- Tail Stripes -->
+    <path d="M 470 310 Q 480 325 465 335" stroke="#D35400" stroke-width="5" stroke-linecap="round" fill="none" />
+    <path d="M 495 335 Q 510 355 485 370" stroke="#D35400" stroke-width="5" stroke-linecap="round" fill="none" />
+    <path d="M 480 380 Q 470 410 440 405" stroke="#D35400" stroke-width="5" stroke-linecap="round" fill="none" />
+
+    <!-- Cat Main Chubby Body / Head Sphere -->
+    <ellipse cx="300" cy="330" rx="175" ry="155" fill="url(#catGrad)" />
+
+    <!-- Ears -->
+    <!-- Left Ear -->
+    <path d="M 175 220 C 150 145, 210 140, 230 195 Z" fill="#FF8B3D" stroke="#E0691B" stroke-width="3" />
+    <path d="M 185 210 C 170 165, 205 160, 218 195 Z" fill="#FFB9B9" />
+
+    <!-- Right Ear -->
+    <path d="M 425 220 C 450 145, 390 140, 370 195 Z" fill="#FF8B3D" stroke="#E0691B" stroke-width="3" />
+    <path d="M 415 210 C 430 165, 395 160, 382 195 Z" fill="#FFB9B9" />
+
+    <!-- Head Stripes -->
+    <path d="M 300 180 L 300 215" stroke="#D35400" stroke-width="6" stroke-linecap="round" />
+    <path d="M 275 190 L 282 220" stroke="#D35400" stroke-width="5" stroke-linecap="round" />
+    <path d="M 325 190 L 318 220" stroke="#D35400" stroke-width="5" stroke-linecap="round" />
+
+    <!-- Chubby Cheeks Side Fluff -->
+    <path d="M 130 330 C 110 320, 115 350, 132 360" fill="#FFA45B" stroke="#E0691B" stroke-width="2" />
+    <path d="M 470 330 C 490 320, 485 350, 468 360" fill="#FFA45B" stroke="#E0691B" stroke-width="2" />
+
+    <!-- Big Round Belly -->
+    <ellipse cx="300" cy="365" rx="125" ry="110" fill="url(#bellyGrad)" />
+
+    <!-- Body Side Stripes -->
+    <path d="M 140 310 Q 175 315 170 335" stroke="#D35400" stroke-width="6" stroke-linecap="round" fill="none" />
+    <path d="M 135 355 Q 170 355 160 375" stroke="#D35400" stroke-width="6" stroke-linecap="round" fill="none" />
+    <path d="M 460 310 Q 425 315 430 335" stroke="#D35400" stroke-width="6" stroke-linecap="round" fill="none" />
+    <path d="M 465 355 Q 430 355 440 375" stroke="#D35400" stroke-width="6" stroke-linecap="round" fill="none" />
+
+    <!-- Eyes (Happy / Sleepy Smiling Arcs) -->
+    <path d="M 230 270 Q 250 250 270 270" fill="none" stroke="#2C1A1D" stroke-width="6" stroke-linecap="round" />
+    <path d="M 330 270 Q 350 250 370 270" fill="none" stroke="#2C1A1D" stroke-width="6" stroke-linecap="round" />
+
+    <!-- Cute Blush Marks -->
+    <ellipse cx="225" cy="285" rx="16" ry="10" fill="#FF7B7B" opacity="0.5" />
+    <ellipse cx="375" cy="285" rx="16" ry="10" fill="#FF7B7B" opacity="0.5" />
+
+    <!-- Pink Nose -->
+    <polygon points="300,285 292,275 308,275" fill="#FF8E9E" stroke="#FF7B7B" stroke-width="1" rx="2" />
+
+    <!-- Mouth (Omega Cat Mouth :3) -->
+    <path d="M 300 286 Q 288 300 278 290" fill="none" stroke="#2C1A1D" stroke-width="4.5" stroke-linecap="round" />
+    <path d="M 300 286 Q 312 300 322 290" fill="none" stroke="#2C1A1D" stroke-width="4.5" stroke-linecap="round" />
+
+    <!-- Whiskers -->
+    <!-- Left Whiskers -->
+    <path d="M 220 285 Q 160 275 140 265" stroke="#684332" stroke-width="3" stroke-linecap="round" />
+    <path d="M 215 295 Q 155 300 135 305" stroke="#684332" stroke-width="3" stroke-linecap="round" />
+    <!-- Right Whiskers -->
+    <path d="M 380 285 Q 440 275 460 265" stroke="#684332" stroke-width="3" stroke-linecap="round" />
+    <path d="M 385 295 Q 445 300 465 305" stroke="#684332" stroke-width="3" stroke-linecap="round" />
+
+    <!-- Little Paws tucked on belly -->
+    <!-- Left Paws -->
+    <ellipse cx="250" cy="385" rx="22" ry="18" fill="#FFFDF9" stroke="#FFEACC" stroke-width="2" />
+    <path d="M 243 388 C 243 394 246 397 246 397" stroke="#D35400" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M 256 388 C 256 394 254 397 254 397" stroke="#D35400" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Right Paws -->
+    <ellipse cx="350" cy="385" rx="22" ry="18" fill="#FFFDF9" stroke="#FFEACC" stroke-width="2" />
+    <path d="M 344 388 C 344 394 346 397 346 397" stroke="#D35400" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M 357 388 C 357 394 354 397 354 397" stroke="#D35400" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Chubby Bottom Feet -->
+    <ellipse cx="205" cy="460" rx="35" ry="24" fill="#FFA45B" stroke="#E0691B" stroke-width="2.5" />
+    <circle cx="190" cy="462" r="6" fill="#FFB9B9" />
+    <circle cx="205" cy="454" r="6" fill="#FFB9B9" />
+    <circle cx="220" cy="462" r="6" fill="#FFB9B9" />
+    <ellipse cx="205" cy="470" rx="14" ry="10" fill="#FFB9B9" />
+
+    <ellipse cx="395" cy="460" rx="35" ry="24" fill="#FFA45B" stroke="#E0691B" stroke-width="2.5" />
+    <circle cx="380" cy="462" r="6" fill="#FFB9B9" />
+    <circle cx="395" cy="454" r="6" fill="#FFB9B9" />
+    <circle cx="410" cy="462" r="6" fill="#FFB9B9" />
+    <ellipse cx="395" cy="470" rx="14" ry="10" fill="#FFB9B9" />
+
+  </g>
+
+  <!-- Sparkles / Floating Hearts -->
+  <g fill="#FF6B8B">
+    <path d="M 160 170 Q 160 155 175 155 Q 190 155 190 170 Q 190 185 175 200 Q 160 185 160 170 Z" transform="rotate(-15 175 175) scale(0.6)" opacity="0.75" />
+    <path d="M 420 160 Q 420 145 435 145 Q 450 145 450 160 Q 450 175 435 190 Q 420 175 420 160 Z" transform="rotate(15 435 165) scale(0.7)" opacity="0.75" />
+  </g>
+  <circle cx="140" cy="220" r="4" fill="#FFD700" opacity="0.8" />
+  <circle cx="460" cy="210" r="5" fill="#FFD700" opacity="0.8" />
+  <circle cx="480" cy="240" r="3" fill="#FFD700" opacity="0.8" />
+</svg>
